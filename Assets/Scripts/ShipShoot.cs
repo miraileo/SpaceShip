@@ -8,25 +8,46 @@ public class ShipShoot : MonoBehaviour
 
     [SerializeField] private float timeBtwAttack;
 
+    [SerializeField] private float timeBtwUltiAttack;
+
     private float cooldown;
+
+    private float ultiCooldown;
 
     Quaternion angle = Quaternion.Euler(0, 0, 90);
 
-    public void Shoot(GameObject bullet)
+    private void Update()
     {
-        Instantiate(bullet, ShootPos.position, angle);
+        cooldown = CheckCooldown(cooldown, timeBtwAttack);
+        ultiCooldown = CheckCooldown(ultiCooldown, timeBtwUltiAttack);
+        Shoot();
     }
 
-    private void Update()
+    private float CheckCooldown(float cooldown, float timeBtwAttack)
     {
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
         }
-        else
+        return cooldown;
+    }
+
+    private void Shoot()
+    {
+        if (cooldown <= 0)
         {
-            Shoot(bullet);
+            Instantiate(bullet, ShootPos.position, angle);
             cooldown = timeBtwAttack;
         }
     }
+
+    public void UltimateShoot(GameObject bullet)
+    {
+        if (ultiCooldown <= 0)
+        {
+            Instantiate(bullet, ShootPos.position, angle);
+            ultiCooldown = timeBtwUltiAttack;
+        }
+    }
+    
 }
