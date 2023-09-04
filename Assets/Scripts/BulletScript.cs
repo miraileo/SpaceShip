@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour
     private void MoveBullet()
     {
         rigidbody2.velocity = new Vector2(0, bulletSpeed);
-        Invoke("DestryBullet", 1.5f);
+        Invoke("DestryBullet", 1.6f);
     }
     private void DestryBullet()
     {

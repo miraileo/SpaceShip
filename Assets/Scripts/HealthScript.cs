@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class HealthScript : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class HealthScript : MonoBehaviour
 
     [SerializeField] private Image healthBar;
 
+    [SerializeField] private GameObject deathPanel;
+
+    int score;
+
     void Update()
     {
         if(health<=0)
         {
+            YandexGame.NewLeaderboardScores("LeaderBoard", score);
             setActive(gameObject);
             HitEffect();
             Invoke("Destroy", 0.5f);
@@ -28,6 +34,7 @@ public class HealthScript : MonoBehaviour
             EnemySgipScript enemy = collision.gameObject.GetComponent<EnemySgipScript>();
             enemy.health = 0;
             enemy.Die();
+            score++;
         }
     }
 
@@ -39,6 +46,8 @@ public class HealthScript : MonoBehaviour
     private void Destroy()
     {
         Destroy(gameObject);
+        deathPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void HitEffect()

@@ -49,6 +49,7 @@ public class EnemySgipScript : MonoBehaviour
     public void Die()
     {
         HitEffect();
+        speed = 0;
         setActive(gameObject);
         Invoke("Destroy", 0.5f);
     }

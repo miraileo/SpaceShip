@@ -29,6 +29,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7149767997878345381}
   m_Father: {fileID: 0}
@@ -93,10 +94,16 @@ MonoBehaviour:
   maxQuantityPlayers: 20
   quantityTop: 3
   quantityAround: 3
+  updateLBMethod: 1
   entriesText: {fileID: 7149767997878345386}
   advanced: 0
-  playerPhotoSize: 0
+  playerPhoto: 1
+  isHiddenPlayerPhoto: {fileID: 0}
   timeTypeConvert: 0
+  decimalSize: 1
+  onUpdateData:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7149767997878345380
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +132,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7149767997760337932}
   m_RootOrder: 0

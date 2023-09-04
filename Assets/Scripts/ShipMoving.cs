@@ -28,6 +28,10 @@ public class ShipMoving : MonoBehaviour
             {
                 rigidbody2.velocity = new Vector2(-speed * touch.deltaPosition.x, -speed * touch.deltaPosition.y);
             }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                rigidbody2.velocity = Vector2.zero;
+            }
         }
     }
 }
