@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4569158099101414434}
   - component: {fileID: 4569158099101414435}
   - component: {fileID: 4569158099101414432}
+  - component: {fileID: 7297650360967798886}
   m_Layer: 7
   m_Name: EnemySpaceShip
   m_TagString: Enemy
@@ -151,6 +152,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.875}
   m_EdgeRadius: 0
+--- !u!114 &7297650360967798886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569158099101414433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df316b1c6e497c47a82225ffd778628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeedBonus: {fileID: 7756735502518763906, guid: 4b6969a6ba0f2264885a449493b49a9a, type: 3}
+  attackDamageBonus: {fileID: 7756735502518763906, guid: d8d1da1fcebb4be41acf99a016dbc79f, type: 3}
+  healthBonus: {fileID: 7756735502518763906, guid: 0d6372ce8651f6f4eb63fdf2ca2b3d1f, type: 3}
 --- !u!1 &8711416873558565747
 GameObject:
   m_ObjectHideFlags: 0

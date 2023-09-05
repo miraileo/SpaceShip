@@ -7,10 +7,12 @@ public class EnemySgipScript : MonoBehaviour
     public float health = 100;
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private int score;
+    BonusesDropScript bonus;
 
     void Start()
     {
         rigidbody2 = GetComponent<Rigidbody2D>();
+        bonus= GetComponent<BonusesDropScript>();
     }
 
     void FixedUpdate()
@@ -41,6 +43,7 @@ public class EnemySgipScript : MonoBehaviour
     private void Destroy()
     {
         GlobalEventManager.SendScore(score);
+        bonus.RandomDrop();
         DestroyImmediate(gameObject);
     }
 

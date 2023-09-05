@@ -2,29 +2,38 @@ using UnityEngine;
 
 public class BonusesDropScript : MonoBehaviour
 {
-    private ShipShoot shipShoot;
 
-    private HealthScript shipHealth;
-    private void Start()
+    [SerializeField] private GameObject attackSpeedBonus;
+    [SerializeField] private GameObject attackDamageBonus;
+    [SerializeField] private GameObject healthBonus;
+
+    void DropAttackSpeedBonus()
     {
-        shipShoot = GetComponent<ShipShoot>();
-        shipHealth = GetComponent<HealthScript>();
+        Instantiate(attackSpeedBonus, transform.position, Quaternion.identity);
+    }
+    void DropDamageBonus()
+    {
+        Instantiate(attackDamageBonus, transform.position, Quaternion.identity);
+    }
+    void DropHealthBonus()
+    {
+        Instantiate(healthBonus, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void RandomDrop()
     {
-        if(collision.tag == "AttackSpeedBonus")
+        int random = Random.Range(0, 3);
+        switch(random)
         {
-            StartCoroutine(shipShoot.BonusAttackSpeed());
-        }
-        if (collision.tag == "HealthBonus")
-        {
-            shipHealth.BonusHealthScript();
-        }
-        if (collision.tag == "DamageBonus")
-        {
-            StartCoroutine(shipShoot.BonusAttackDamage());
+            case 0:
+            DropAttackSpeedBonus();
+            break;
+            case 1:
+            DropDamageBonus();
+            break;
+            case 2:
+            DropHealthBonus();
+            break;
         }
     }
-
 }

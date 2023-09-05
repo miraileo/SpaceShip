@@ -74,7 +74,7 @@ public class ShipShoot : MonoBehaviour
     {
         damage *= 2;
         isPowered = true;
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         damage /= 2;
         isPowered = false;
     }
