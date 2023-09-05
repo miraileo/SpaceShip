@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
-    private float health = 40;
+    private float health = 100;
 
     [SerializeField] private GameObject hitEffect;
 
@@ -54,5 +54,10 @@ public class HealthScript : MonoBehaviour
     private void HealthBarUpdate()
     {
         healthBar.fillAmount = health / 100;
+    }
+
+    public void BonusHealthScript()
+    {
+        health += 20;
     }
 }

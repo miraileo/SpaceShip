@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - AttackSpeedBonus
+  - HealthBonus
+  - DamageBonus
   layers:
   - Default
   - TransparentFX

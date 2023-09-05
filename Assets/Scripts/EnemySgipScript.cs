@@ -56,4 +56,15 @@ public class EnemySgipScript : MonoBehaviour
         setActive(gameObject);
         Invoke("Destroy", 0.5f);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet")
+        {
+            ShipShoot ship = FindObjectOfType<ShipShoot>();
+            BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
+            health = TakeDamage(ship.damage);
+            bullet.DestroyBullet();
+        }
+    }
 }

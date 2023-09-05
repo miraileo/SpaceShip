@@ -4,7 +4,6 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
     private Rigidbody2D rigidbody2;
-    public float damage = 15;
 
     [SerializeField] private GameObject hitEffect;
 
@@ -20,28 +19,14 @@ public class BulletScript : MonoBehaviour
     private void MoveBullet()
     {
         rigidbody2.velocity = new Vector2(0, bulletSpeed);
-        Invoke("DestryBullet", 1.6f);
-    }
-    private void DestryBullet()
-    {
-        Destroy(gameObject);
+        Invoke("Destroy", 1.6f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    #region bulletCollision
+    private void DisableBullet(GameObject bullet)
     {
-        if (collision.tag == "Enemy")
-        {
-            EnemySgipScript enemy = collision.GetComponent<EnemySgipScript>();
-            enemy.health = enemy.TakeDamage(damage);
-            bulletSpeed = 0;
-            setActive(gameObject);
-            HitEffect();
-        }
-    }
-
-    private void setActive(GameObject hui)
-    {
-        hui.GetComponent<Renderer>().enabled = false;
+        bullet.GetComponent<Renderer>().enabled = false;
+        bulletSpeed = 0;
     }
 
     private void HitEffect()
@@ -49,8 +34,15 @@ public class BulletScript : MonoBehaviour
         hitEffect.SetActive(true);
         Invoke("DisableHitEffect", 0.35f);
     }
-    private void DisableHitEffect()
+
+    public void DestroyBullet()
     {
-        hitEffect.SetActive(false);
+        HitEffect();
+        DisableBullet(gameObject);
+        Invoke("Destroy", 0.35f);
     }
+
+    private void Destroy() { Destroy(gameObject); }
+    private void DisableHitEffect() { hitEffect.SetActive(false); }
+    #endregion
 }
