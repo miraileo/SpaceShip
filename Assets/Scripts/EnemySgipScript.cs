@@ -6,6 +6,8 @@ public class EnemySgipScript : MonoBehaviour
     [SerializeField] float speed;
     public float health = 100;
     [SerializeField] private GameObject hitEffect;
+    [SerializeField] private int score;
+
     void Start()
     {
         rigidbody2 = GetComponent<Rigidbody2D>();
@@ -38,7 +40,8 @@ public class EnemySgipScript : MonoBehaviour
 
     private void Destroy()
     {
-        Destroy(gameObject);
+        GlobalEventManager.SendScore(score);
+        DestroyImmediate(gameObject);
     }
 
     private void HitEffect()

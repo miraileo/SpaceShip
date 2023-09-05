@@ -1,0 +1,18 @@
+using UnityEngine.Events;
+
+public class GlobalEventManager
+{
+    public static UnityEvent<int> onEnemyKilled = new UnityEvent<int>();
+
+    public static UnityEvent setBestScore = new UnityEvent();
+
+    public static void SendScore(int score)
+    {
+        onEnemyKilled.Invoke(score);
+    }
+
+    public static void SendBestScore()
+    {
+        setBestScore.Invoke();
+    }
+}
