@@ -20,6 +20,11 @@ public class HealthScript : MonoBehaviour
             Invoke("Destroy", 0.5f);
         }
         HealthBarUpdate();
+
+        if( health >=100)
+        {
+            health = 100;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,6 +63,13 @@ public class HealthScript : MonoBehaviour
 
     public void BonusHealthScript()
     {
-        health += 20;
+        if (health < 100)
+        {
+            health += 20;
+            if (health >= 100)
+            {
+                health = 100;
+            }
+        }
     }
 }

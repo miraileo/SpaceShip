@@ -6,7 +6,10 @@ public class ShipShoot : MonoBehaviour
     [SerializeField] private Transform ShootPos;
 
     [SerializeField] private GameObject bullet;
+
     [SerializeField] private GameObject poweredBullet;
+
+    [SerializeField] private GameObject speedBullets;
 
     [SerializeField] private float timeBtwAttack;
 
@@ -16,7 +19,9 @@ public class ShipShoot : MonoBehaviour
 
     private float ultiCooldown;
 
-    private bool isPowered;
+    private bool isPoweredBonus;
+
+    private bool isSpeedBonus;
 
     Quaternion angle = Quaternion.Euler(0, 0, 90);
 
@@ -42,9 +47,13 @@ public class ShipShoot : MonoBehaviour
     {
         if (cooldown <= 0)
         {
-            if (isPowered == true)
+            if (isPoweredBonus == true)
             {
                 Instantiate(poweredBullet, ShootPos.position, angle);
+            }
+            else if(isSpeedBonus == true)
+            {
+                Instantiate(speedBullets, ShootPos.position, angle);
             }
             else
             {
@@ -65,18 +74,26 @@ public class ShipShoot : MonoBehaviour
 
     public IEnumerator BonusAttackSpeed()
     {
-        timeBtwAttack /= 2;
-        yield return new WaitForSeconds(5);
-        timeBtwAttack *= 2;
+        if (isSpeedBonus != true)
+        {
+            timeBtwAttack /= 2;
+            isSpeedBonus = true;
+            yield return new WaitForSeconds(5);
+            timeBtwAttack *= 2;
+            isSpeedBonus = false;
+        }
     }
 
     public IEnumerator BonusAttackDamage()
     {
-        damage *= 2;
-        isPowered = true;
-        yield return new WaitForSeconds(5);
-        damage /= 2;
-        isPowered = false;
+        if (isPoweredBonus != true)
+        {
+            damage *= 2;
+            isPoweredBonus = true;
+            yield return new WaitForSeconds(5);
+            damage /= 2;
+            isPoweredBonus = false;
+        }
     }
 
 }
