@@ -9,6 +9,7 @@ TagManager:
   - AttackSpeedBonus
   - HealthBonus
   - DamageBonus
+  - Coin
   layers:
   - Default
   - TransparentFX
