@@ -167,6 +167,7 @@ MonoBehaviour:
   attackSpeedBonus: {fileID: 6799494763543505379, guid: 4b6969a6ba0f2264885a449493b49a9a, type: 3}
   attackDamageBonus: {fileID: 2328223482335113691, guid: d8d1da1fcebb4be41acf99a016dbc79f, type: 3}
   healthBonus: {fileID: 8675853644210006987, guid: 0d6372ce8651f6f4eb63fdf2ca2b3d1f, type: 3}
+  coin: {fileID: 8675853644210006987, guid: 6fe8640f9f28f414e9284a3fb779df57, type: 3}
 --- !u!1 &8711416873558565747
 GameObject:
   m_ObjectHideFlags: 0
