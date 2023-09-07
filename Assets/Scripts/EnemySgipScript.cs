@@ -69,5 +69,9 @@ public class EnemySgipScript : MonoBehaviour
             health = TakeDamage(ship.damage);
             bullet.DestroyBullet();
         }
+        else if (collision.tag == "DeathZone")
+        {
+            Destroy(gameObject);
+        }
     }
 }

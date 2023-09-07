@@ -13,8 +13,6 @@ public class ShipShoot : MonoBehaviour
 
     [SerializeField] private float timeBtwAttack;
 
-    [SerializeField] private float timeBtwUltiAttack;
-
     private float cooldown;
 
     private float ultiCooldown;
@@ -30,7 +28,6 @@ public class ShipShoot : MonoBehaviour
     private void Update()
     {
         cooldown = CheckCooldown(cooldown, timeBtwAttack);
-        ultiCooldown = CheckCooldown(ultiCooldown, timeBtwUltiAttack);
         Shoot();
     }
 
@@ -60,15 +57,6 @@ public class ShipShoot : MonoBehaviour
                 Instantiate(bullet, ShootPos.position, angle);
             }
             cooldown = timeBtwAttack;
-        }
-    }
-
-    public void UltimateShoot(GameObject bullet)
-    {
-        if (ultiCooldown <= 0)
-        {
-            Instantiate(bullet, ShootPos.position, angle);
-            ultiCooldown = timeBtwUltiAttack;
         }
     }
 

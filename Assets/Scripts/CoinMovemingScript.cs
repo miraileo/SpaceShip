@@ -11,6 +11,6 @@ public class CoinMovemingScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.2f);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.15f);
     }
 }

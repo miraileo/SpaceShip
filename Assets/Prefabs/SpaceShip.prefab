@@ -5150,7 +5150,6 @@ MonoBehaviour:
   poweredBullet: {fileID: 5068849465007478700, guid: ebae4bd963f2de14ab612f5ab26e5210, type: 3}
   speedBullets: {fileID: 5068849465007478700, guid: 6b411838036631844ad1fc6e3d72fca4, type: 3}
   timeBtwAttack: 0.3
-  timeBtwUltiAttack: 5
   damage: 25
 --- !u!61 &5808293521716593063
 BoxCollider2D:
