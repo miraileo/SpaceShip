@@ -1,15 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class HealthScript : MonoBehaviour
 {
-    private float health = 100;
+    private float health = 40;
 
     [SerializeField] private GameObject hitEffect;
 
     [SerializeField] private Image healthBar;
 
     [SerializeField] private GameObject deathPanel;
+
+    CoinScript coins;
+
+    private void Awake()
+    {
+        coins= GetComponent<CoinScript>();
+    }
 
     void Update()
     {
@@ -18,6 +26,7 @@ public class HealthScript : MonoBehaviour
             setActive(gameObject);
             HitEffect();
             Invoke("Destroy", 0.5f);
+            coins.MySave();
         }
         HealthBarUpdate();
 

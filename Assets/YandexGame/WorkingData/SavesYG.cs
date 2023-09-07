@@ -16,6 +16,7 @@ namespace YG
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
         public int record;
+        public int numOfCoins;
 
         // Ваши сохранения
 
