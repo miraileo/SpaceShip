@@ -8,8 +8,6 @@ public class BonusesScript : MonoBehaviour
 
     private CoinScript coin;
 
-    private bool takeCoin;
-
     [SerializeField] private ParticleSystem getBonusHit;
     private void Start()
     {
@@ -39,7 +37,7 @@ public class BonusesScript : MonoBehaviour
         }
         if (collision.tag == "Coin")
         {
-            takeCoin = true;
+            coin.CoinsText();
             PlayParticleSystem(Color.blue, collision);
         }
     }
@@ -54,11 +52,7 @@ public class BonusesScript : MonoBehaviour
 
     private void GiveCoin(int numOfCoins)
     {
-        if (takeCoin == true)
-        {
-            coin.GetCoin(numOfCoins);
-            takeCoin = false;
-        }
+        coin.GetCoin(numOfCoins);
     }
 
 }

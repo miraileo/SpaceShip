@@ -11,9 +11,8 @@ public class CoinScript : MonoBehaviour
         coin += numOfCoins;
     }
 
-    private void Update()
+    public void CoinsText()
     {
         coinsText.text = coin.ToString();
-        Debug.Log(coin);
     }
 }

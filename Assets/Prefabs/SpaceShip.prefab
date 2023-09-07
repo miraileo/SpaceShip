@@ -5148,6 +5148,7 @@ MonoBehaviour:
   ShootPos: {fileID: 5808293520958616863}
   bullet: {fileID: 5068849465007478700, guid: 10404b4a06b367241babe0ce393d5b7f, type: 3}
   poweredBullet: {fileID: 5068849465007478700, guid: ebae4bd963f2de14ab612f5ab26e5210, type: 3}
+  speedBullets: {fileID: 5068849465007478700, guid: 6b411838036631844ad1fc6e3d72fca4, type: 3}
   timeBtwAttack: 0.3
   timeBtwUltiAttack: 5
   damage: 25

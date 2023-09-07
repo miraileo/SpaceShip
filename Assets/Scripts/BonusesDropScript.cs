@@ -32,7 +32,7 @@ public class BonusesDropScript : MonoBehaviour
 
     public void RandomDrop()
     {
-        int random = Random.Range(0, 7);
+        int random = Random.Range(0, 8);
         switch(random)
         {
             case 0:
