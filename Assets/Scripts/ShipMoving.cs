@@ -3,7 +3,6 @@ using UnityEngine;
 public class ShipMoving : MonoBehaviour
 {
     private Rigidbody2D rigidbody2;
-    private FixedJoystick joystick;
     [SerializeField] float speed;
 
     private Touch touch;
@@ -11,7 +10,6 @@ public class ShipMoving : MonoBehaviour
     void Start()
     {
         rigidbody2 = GetComponent<Rigidbody2D>();   
-        joystick = FindObjectOfType<FixedJoystick>();
     }
     void FixedUpdate()
     {
