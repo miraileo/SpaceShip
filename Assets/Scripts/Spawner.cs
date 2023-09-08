@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform spawnPos;
 
     [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject rock;
 
     Quaternion angle;
 
@@ -21,7 +22,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        Spawn();
+        SpawnEnemies();
         coolDown();
     }
 
@@ -39,13 +40,29 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void Spawn()
+    void SpawnEnemies()
     {
         if (ReadyToSpawn == true)
         {
             spawnPos = randomSpawnPos();
             Instantiate(enemy, spawnPos.position, angle);
+            if (RandomSpawnVarity() == 1)
+            {
+                SpawnRocks();
+            }
         }
+    }
+
+    void SpawnRocks()
+    {
+        spawnPos = randomSpawnPos();
+        Instantiate(rock, spawnPos.position, Quaternion.identity);
+    }
+
+    private int RandomSpawnVarity()
+    {
+        int random = Random.Range(0, 3);
+        return random;
     }
 
     Transform randomSpawnPos()

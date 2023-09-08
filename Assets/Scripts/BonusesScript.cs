@@ -40,6 +40,12 @@ public class BonusesScript : MonoBehaviour
             coin.CoinsText();
             PlayParticleSystem(Color.blue, collision);
         }
+        if (collision.tag == "Rock")
+        {
+            RockScript rock = collision.GetComponent<RockScript>();
+            shipHealth.TakeDamage(rock.damage);
+            PlayParticleSystem(Color.gray, collision);
+        }
     }
 
     void PlayParticleSystem(Color color, Collider2D collision)

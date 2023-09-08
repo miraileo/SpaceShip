@@ -5216,6 +5216,7 @@ MonoBehaviour:
   spawnTime: 3
   spawnPos: {fileID: 196343062}
   enemy: {fileID: 4569158099101414433, guid: c6fd9ef100d981146b495a6103e51d0d, type: 3}
+  rock: {fileID: 1655652370566819760, guid: 903cbf8076d5b1244b8674f5fdb1e45a, type: 3}
 --- !u!4 &196343062
 Transform:
   m_ObjectHideFlags: 0

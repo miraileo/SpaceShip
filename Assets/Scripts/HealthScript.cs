@@ -4,7 +4,7 @@ using YG;
 
 public class HealthScript : MonoBehaviour
 {
-    private float health = 40;
+    private float health = 100;
 
     [SerializeField] private GameObject hitEffect;
 
@@ -40,8 +40,8 @@ public class HealthScript : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            health -= 20;
             EnemySgipScript enemy = collision.gameObject.GetComponent<EnemySgipScript>();
+            TakeDamage(enemy.damage);
             enemy.health = 0;
             enemy.Die();
         }
@@ -80,5 +80,10 @@ public class HealthScript : MonoBehaviour
                 health = 100;
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }

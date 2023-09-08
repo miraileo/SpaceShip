@@ -8,6 +8,7 @@ public class EnemySgipScript : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private int score;
     BonusesDropScript bonus;
+    public float damage;
 
     void Start()
     {
