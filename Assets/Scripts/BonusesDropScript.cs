@@ -9,7 +9,7 @@ public class BonusesDropScript : MonoBehaviour
     [SerializeField] private GameObject healthBonus;
     [SerializeField] private GameObject coin;
 
-    private int numOfCoins = 5;
+    [SerializeField] private int numOfCoins = 5;
 
     void DropAttackSpeedBonus()
     {

@@ -12,8 +12,7 @@ public class EnemySgipScript : MonoBehaviour
 
     void Start()
     {
-        rigidbody2 = GetComponent<Rigidbody2D>();
-        bonus= GetComponent<BonusesDropScript>();
+        SetUp();
     }
 
     void FixedUpdate()
@@ -74,5 +73,17 @@ public class EnemySgipScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if(collision.tag == "Player")
+        {
+            HealthScript player = collision.gameObject.GetComponent<HealthScript>();
+            player.TakeDamage(damage);
+            Die();
+        }
+    }
+
+    protected void SetUp()
+    {
+        rigidbody2 = GetComponent<Rigidbody2D>();
+        bonus = GetComponent<BonusesDropScript>();
     }
 }

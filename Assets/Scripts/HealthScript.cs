@@ -36,17 +36,6 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Enemy")
-        {
-            EnemySgipScript enemy = collision.gameObject.GetComponent<EnemySgipScript>();
-            TakeDamage(enemy.damage);
-            enemy.health = 0;
-            enemy.Die();
-        }
-    }
-
     private void setActive(GameObject hui)
     {
         hui.GetComponent<Renderer>().enabled = false;
