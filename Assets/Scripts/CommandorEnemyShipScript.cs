@@ -43,4 +43,6 @@ public class CommandorEnemyShipScript : EnemySgipScript
             Destroy(gameObject);
         }
     }
+
+   
 }

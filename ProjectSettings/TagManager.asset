@@ -12,6 +12,7 @@ TagManager:
   - Coin
   - DeathZone
   - Rock
+  - Origin
   layers:
   - Default
   - TransparentFX

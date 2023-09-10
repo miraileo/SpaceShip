@@ -5,7 +5,7 @@ using YG;
 public class LeaderBoard : MonoBehaviour
 {
     private int finalScore = 0;
-    private int _score = 0;
+    public int _score = 0;
 
     [SerializeField] private Text recordText;
     [SerializeField] private Text scoreText;

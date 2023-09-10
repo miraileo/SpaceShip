@@ -10,8 +10,11 @@ public class EnemySgipScript : MonoBehaviour
     BonusesDropScript bonus;
     public float damage;
 
+    LeaderBoard leaderBoard;
+
     void Start()
     {
+        GetScore(); 
         SetUp();
     }
 
@@ -85,5 +88,15 @@ public class EnemySgipScript : MonoBehaviour
     {
         rigidbody2 = GetComponent<Rigidbody2D>();
         bonus = GetComponent<BonusesDropScript>();
+    }
+
+    void GetScore()
+    {
+        leaderBoard = FindObjectOfType<LeaderBoard>().GetComponent<LeaderBoard>();
+        if(leaderBoard._score%10 >= 0)
+        {
+            health += (leaderBoard._score / 10 * 10);
+            speed += leaderBoard._score/20;
+        }
     }
 }
