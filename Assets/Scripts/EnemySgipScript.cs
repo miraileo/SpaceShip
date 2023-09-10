@@ -95,8 +95,8 @@ public class EnemySgipScript : MonoBehaviour
         leaderBoard = FindObjectOfType<LeaderBoard>().GetComponent<LeaderBoard>();
         if(leaderBoard._score%10 >= 0)
         {
-            health += (leaderBoard._score / 10 * 10);
-            speed += leaderBoard._score/20;
+            health += leaderBoard._score;
+            speed += 0.25f*leaderBoard._score/10;
         }
     }
 }

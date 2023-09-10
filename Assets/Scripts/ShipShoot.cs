@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ShipShoot : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class ShipShoot : MonoBehaviour
     [SerializeField] private float timeBtwAttack;
 
     private float cooldown;
-
-    private float ultiCooldown;
 
     private bool isPoweredBonus;
 
