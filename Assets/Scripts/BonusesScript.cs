@@ -38,7 +38,7 @@ public class BonusesScript : MonoBehaviour
         if (collision.tag == "Coin")
         {
             coin.CoinsText();
-            PlayParticleSystem(Color.blue, collision);
+            PlayParticleSystem(Color.cyan, collision);
         }
         if (collision.tag == "Rock")
         {
