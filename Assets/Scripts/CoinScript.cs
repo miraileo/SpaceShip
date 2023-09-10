@@ -45,4 +45,21 @@ public class CoinScript : MonoBehaviour
     {
         coinsText.text = YandexGame.savesData.numOfCoins.ToString();
     }
+
+    public bool CheckEnoughMoney(int price)
+    {
+        bool flag;
+        if(coin>= price)
+        {
+            coin -= price;
+            CoinsText();
+            flag = true;
+            MySave();
+        }
+        else
+        {
+            flag = false;
+        }
+        return flag;
+    }
 }

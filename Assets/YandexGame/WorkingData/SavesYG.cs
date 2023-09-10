@@ -17,7 +17,10 @@ namespace YG
         public bool[] openLevels = new bool[3];
         public int record;
         public int numOfCoins;
-
+        public float timeBtwAttack = 0.45f;
+        public float damage = 25;
+        public int priceForDamageUpgrade = 50;
+        public int priceForAttackSpeedUpgrade = 30;
         // Ваши сохранения
 
         // ...

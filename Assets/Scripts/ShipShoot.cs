@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using YG;
 
 public class ShipShoot : MonoBehaviour
 {
@@ -22,7 +23,26 @@ public class ShipShoot : MonoBehaviour
 
     Quaternion angle = Quaternion.Euler(0, 0, 90);
 
-    public float damage = 25;
+    public float damage;
+
+
+    private void Awake()
+    {
+        if (YandexGame.SDKEnabled == true)
+        {
+            GetLoad();
+        }
+    }
+
+    private void Start()
+    {
+        GlobalEventManager.damageUpgrade.AddListener(DamageUpgrade);
+        GlobalEventManager.attackSpeedUpgrade.AddListener(AttackSpeedUpgrade);
+    }
+
+    private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
+    private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
+
 
     private void Update()
     {
@@ -81,6 +101,31 @@ public class ShipShoot : MonoBehaviour
             damage /= 2;
             isPoweredBonus = false;
         }
+    }
+
+    void DamageUpgrade(float bonus)
+    {
+        damage += bonus;
+        MySave();
+    }
+    void AttackSpeedUpgrade(float bonus)
+    {
+        timeBtwAttack -= bonus;
+        MySave();
+    }
+
+    public void GetLoad()
+    {
+        damage = YandexGame.savesData.damage;
+        timeBtwAttack = YandexGame.savesData.timeBtwAttack;
+    }
+
+    public void MySave()
+    {
+        YandexGame.savesData.damage = damage;
+        YandexGame.savesData.timeBtwAttack = timeBtwAttack;
+
+        YandexGame.SaveProgress();
     }
 
 }

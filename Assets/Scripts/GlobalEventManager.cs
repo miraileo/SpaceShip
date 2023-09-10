@@ -7,6 +7,8 @@ public class GlobalEventManager
     public static UnityEvent setBestScore = new UnityEvent();
 
     public static UnityEvent<int> dropCoin = new UnityEvent<int>();
+    public static UnityEvent<float> damageUpgrade = new UnityEvent<float>();
+    public static UnityEvent<float> attackSpeedUpgrade = new UnityEvent<float>();
 
     public static void SendScore(int score)
     {
@@ -21,5 +23,15 @@ public class GlobalEventManager
     public static void DropCoin(int numOfCoins)
     {
         dropCoin.Invoke(numOfCoins);
+    }
+
+    public static void DamageUpgrade(float bonuce)
+    {
+        damageUpgrade.Invoke(bonuce);
+    }
+
+    public static void AttackSpeedUpgrade(float bonuce)
+    {
+        attackSpeedUpgrade.Invoke(bonuce);
     }
 }
