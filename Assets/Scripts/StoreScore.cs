@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
+using YG.Example;
 
 public class StoreScore : MonoBehaviour
 {
@@ -12,14 +14,18 @@ public class StoreScore : MonoBehaviour
     [SerializeField] private Text priceForDamageText;
     [SerializeField] private Text priceForAttckSpeedText;
     [SerializeField] private GameObject store;
-    int counter = 0;
 
-/*    private void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
+    private void OnEnable()
+    {
+        YandexGame.RewardVideoEvent += Rewarded;
+        YandexGame.GetDataEvent += GetLoad;
+    }
 
-    private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;*/
-
-    private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
-    private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
+    private void OnDisable()
+    {
+        YandexGame.RewardVideoEvent -= Rewarded;
+        YandexGame.GetDataEvent -= GetLoad;
+    }
 
     private void Awake()
     {
@@ -36,7 +42,10 @@ public class StoreScore : MonoBehaviour
 
     private void Update()
     {
-        PriceText();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            PriceText();
+        }
     }
 
     public void DamageUpgrade()
@@ -61,16 +70,11 @@ public class StoreScore : MonoBehaviour
 
     public void OpenStore()
     {
-        if (counter == 0)
-        {
-            store.SetActive(true);
-            counter = 1;
-        }
-        else
-        {
-            counter = 0;
-            store.SetActive(false);
-        }
+        store.SetActive(true);
+    }
+    public void CloseStore()
+    {
+        store.SetActive(false);
     }
 
     public void GetLoad()
@@ -92,7 +96,7 @@ public class StoreScore : MonoBehaviour
         priceForAttckSpeedText.text = YandexGame.savesData.priceForAttackSpeedUpgrade.ToString();
     }
 
-/*    private void Rewarded(int id)
+    private void Rewarded(int id)
     {
         if (id == 1)
         {
@@ -103,5 +107,5 @@ public class StoreScore : MonoBehaviour
     public void ExampleOpenRewardAd(int id)
     {
         YandexGame.RewVideoShow(id);
-    }*/
+    }
 }
