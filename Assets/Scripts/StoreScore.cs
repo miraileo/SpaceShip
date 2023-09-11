@@ -71,6 +71,10 @@ public class StoreScore : MonoBehaviour
     public void OpenStore()
     {
         store.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            coinScript.LoadMoney();
+        }
     }
     public void CloseStore()
     {

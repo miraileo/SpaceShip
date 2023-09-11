@@ -41,7 +41,7 @@ public class CoinScript : MonoBehaviour
         YandexGame.SaveProgress();
     }
 
-    void LoadMoney()
+    public void LoadMoney()
     {
         coinsText.text = YandexGame.savesData.numOfCoins.ToString();
     }
