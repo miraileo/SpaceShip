@@ -442,7 +442,7 @@ MonoBehaviour:
   shootClip: {fileID: 8300000, guid: 4fdf00dbb08cd9240bb2826a2030eae2, type: 3}
   shootFastClip: {fileID: 8300000, guid: 8fcfae23768e22b45aac795b39fcf6e8, type: 3}
   PickUpEffect: {fileID: 8300000, guid: 47cf869e8c7a3c6408fc8f3c8d3ad138, type: 3}
-  DestroyEffect: {fileID: 8300000, guid: 14318ba39de8b3d4a923cee0012c9e6f, type: 3}
+  DestroyEffect: {fileID: 8300000, guid: 6e664a5d22591fa45a0ee712175745ba, type: 3}
   sourceEffects: {fileID: 165827422}
   sourceMusic: {fileID: 165827425}
   settings: {fileID: 1426773893}
