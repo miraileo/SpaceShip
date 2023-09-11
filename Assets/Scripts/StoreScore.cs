@@ -14,6 +14,13 @@ public class StoreScore : MonoBehaviour
     [SerializeField] private GameObject store;
     int counter = 0;
 
+/*    private void OnEnable() => YandexGame.RewardVideoEvent += Rewarded;
+
+    private void OnDisable() => YandexGame.RewardVideoEvent -= Rewarded;*/
+
+    private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
+    private void OnDisable() => YandexGame.GetDataEvent -= GetLoad;
+
     private void Awake()
     {
         if (YandexGame.SDKEnabled == true)
@@ -57,15 +64,12 @@ public class StoreScore : MonoBehaviour
         if (counter == 0)
         {
             store.SetActive(true);
-            //Time.timeScale = 0;
             counter = 1;
-            //Invoke("PriceText", 0.2f);
         }
         else
         {
-            store.SetActive(false);
             counter = 0;
-            //Time.timeScale = 1;
+            store.SetActive(false);
         }
     }
 
@@ -87,4 +91,17 @@ public class StoreScore : MonoBehaviour
         priceForDamageText.text = YandexGame.savesData.priceForDamageUpgrade.ToString();
         priceForAttckSpeedText.text = YandexGame.savesData.priceForAttackSpeedUpgrade.ToString();
     }
+
+/*    private void Rewarded(int id)
+    {
+        if (id == 1)
+        {
+            coinScript.AddMoney();
+        }
+    }
+
+    public void ExampleOpenRewardAd(int id)
+    {
+        YandexGame.RewVideoShow(id);
+    }*/
 }

@@ -16,7 +16,7 @@ namespace YG
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
         public int record;
-        public int numOfCoins;
+        public int numOfCoins = 0;
         public float timeBtwAttack = 0.45f;
         public float damage = 25;
         public int priceForDamageUpgrade = 50;

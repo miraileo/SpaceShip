@@ -13420,12 +13420,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883585709}
     - target: {fileID: 5808293521716593062, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
+      propertyPath: damageText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808293521716593062, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
       propertyPath: speedBullets
       value: 
       objectReference: {fileID: 5068849465007478700, guid: 6b411838036631844ad1fc6e3d72fca4, type: 3}
     - target: {fileID: 5808293521716593062, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
       propertyPath: timeBtwAttack
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808293521716593062, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
+      propertyPath: timeBtwAttackText
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}

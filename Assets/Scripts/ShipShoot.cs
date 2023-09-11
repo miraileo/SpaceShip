@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using YG;
 
 public class ShipShoot : MonoBehaviour

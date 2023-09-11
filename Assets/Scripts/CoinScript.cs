@@ -49,7 +49,7 @@ public class CoinScript : MonoBehaviour
     public bool CheckEnoughMoney(int price)
     {
         bool flag;
-        if(coin>= price)
+        if(coin >= price)
         {
             coin -= price;
             CoinsText();
@@ -62,4 +62,11 @@ public class CoinScript : MonoBehaviour
         }
         return flag;
     }
+
+ /*   public void AddMoney()
+    {
+        coin += 100;
+        coinsText.text = coin.ToString();
+        MySave();
+    }*/
 }
