@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class BonusesScript : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class BonusesScript : MonoBehaviour
 
     private CoinScript coin;
 
+    AudioScript source;
+
     [SerializeField] private ParticleSystem getBonusHit;
     private void Start()
     {
@@ -15,6 +18,7 @@ public class BonusesScript : MonoBehaviour
         shipHealth = GetComponent<HealthScript>();
         coin= GetComponent<CoinScript>();
         GlobalEventManager.dropCoin.AddListener(GiveCoin);
+        source = FindObjectOfType<AudioScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,28 +27,33 @@ public class BonusesScript : MonoBehaviour
         {
             StartCoroutine(shipShoot.BonusAttackSpeed());
             PlayParticleSystem(Color.yellow, collision);
+            source.PickUp();
         }
         if (collision.tag == "HealthBonus")
         {
             shipHealth.BonusHealthScript();
             getBonusHit.Play();
             PlayParticleSystem(Color.green, collision);
+            source.PickUp();
         }
         if (collision.tag == "DamageBonus")
         {
             StartCoroutine(shipShoot.BonusAttackDamage());
             PlayParticleSystem(Color.red, collision);
+            source.PickUp();
         }
         if (collision.tag == "Coin")
         {
             coin.CoinsText();
             PlayParticleSystem(Color.cyan, collision);
+            source.PickUp();
         }
         if (collision.tag == "Rock")
         {
             RockScript rock = collision.GetComponent<RockScript>();
             shipHealth.TakeDamage(rock.damage);
             PlayParticleSystem(Color.gray, collision);
+            source.Destroy();
         }
     }
 

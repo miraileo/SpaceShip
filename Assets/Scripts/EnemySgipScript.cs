@@ -10,12 +10,15 @@ public class EnemySgipScript : MonoBehaviour
     BonusesDropScript bonus;
     public float damage;
 
-    protected LeaderBoard leaderBoard;
+    LeaderBoard leaderBoard;
+
+    AudioScript source;
 
     void Start()
     {
         GetScore(); 
         SetUp();
+        source = FindObjectOfType<AudioScript>();
     }
 
     void FixedUpdate()
@@ -71,6 +74,10 @@ public class EnemySgipScript : MonoBehaviour
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
             health = TakeDamage(ship.damage);
             bullet.DestroyBullet();
+            if(health<=0)
+            {
+                source.Destroy();
+            }
         }
         else if (collision.tag == "DeathZone")
         {
@@ -80,6 +87,7 @@ public class EnemySgipScript : MonoBehaviour
         {
             HealthScript player = collision.gameObject.GetComponent<HealthScript>();
             player.TakeDamage(damage);
+            source.Destroy();
             Die();
         }
     }

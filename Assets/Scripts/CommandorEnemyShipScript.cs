@@ -10,9 +10,11 @@ public class CommandorEnemyShipScript : EnemySgipScript
     [SerializeField] private Transform shootPos2;
     [SerializeField] private GameObject bullet;
     private float timeBtwAttack = 0;
+    protected LeaderBoard leaderBoard;
     Quaternion angle = Quaternion.Euler(0, 0, -90);
     void Start()
     {
+        leaderBoard = FindObjectOfType<LeaderBoard>().GetComponent<LeaderBoard>();
         SetUp();
         health = 800 + (leaderBoard._score*12);
         origin = GameObject.FindGameObjectWithTag("Origin");

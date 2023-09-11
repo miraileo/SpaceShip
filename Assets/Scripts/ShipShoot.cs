@@ -24,6 +24,7 @@ public class ShipShoot : MonoBehaviour
 
     public float damage;
 
+    AudioScript source;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class ShipShoot : MonoBehaviour
         {
             GetLoad();
         }
+        source = FindObjectOfType<AudioScript>();
     }
 
     private void Start()
@@ -65,17 +67,28 @@ public class ShipShoot : MonoBehaviour
     {
         if (cooldown <= 0)
         {
+            
             if (isPoweredBonus == true)
             {
                 Instantiate(poweredBullet, ShootPos.position, angle);
+                if(isSpeedBonus == true)
+                {
+                    source.PlayFastShoot();
+                }
+                else
+                {
+                    source.PlayShoot();
+                }
             }
             else if(isSpeedBonus == true)
             {
                 Instantiate(speedBullets, ShootPos.position, angle);
+                source.PlayFastShoot();
             }
             else
             {
                 Instantiate(bullet, ShootPos.position, angle);
+                source.PlayShoot();
             }
             cooldown = timeBtwAttack;
         }
