@@ -14,7 +14,9 @@ public class StoreScore : MonoBehaviour
     [SerializeField] private Text priceForDamageText;
     [SerializeField] private Text priceForAttckSpeedText;
     [SerializeField] private GameObject store;
-
+    private int attackSpeedUpgrades;
+    [SerializeField] private Text attackSpeedUpgradesText;
+    [SerializeField] private Button attackSpeedUpgradeButton;
     private void OnEnable()
     {
         YandexGame.RewardVideoEvent += Rewarded;
@@ -60,11 +62,16 @@ public class StoreScore : MonoBehaviour
 
     public void AttackSpeedUpgrade()
     {
-        if (coinScript.CheckEnoughMoney(priceForAttackSpeed))
+        if (coinScript.CheckEnoughMoney(priceForAttackSpeed) && attackSpeedUpgrades<5)
         {
             GlobalEventManager.AttackSpeedUpgrade(attackSpeedBonuce);
             priceForAttackSpeed *= 2;
+            attackSpeedUpgrades++;
             MySave();
+        }
+        else if(attackSpeedUpgrades == 5)
+        {
+            attackSpeedUpgradeButton.interactable = false;
         }
     }
 
@@ -85,12 +92,14 @@ public class StoreScore : MonoBehaviour
     {
         priceForDamage = YandexGame.savesData.priceForDamageUpgrade;
         priceForAttackSpeed = YandexGame.savesData.priceForAttackSpeedUpgrade;
+        attackSpeedUpgrades = YandexGame.savesData.attackSpeedUpgrades;
     }
 
     public void MySave()
     {
         YandexGame.savesData.priceForDamageUpgrade = priceForDamage;
         YandexGame.savesData.priceForAttackSpeedUpgrade = priceForAttackSpeed;
+        YandexGame.savesData.attackSpeedUpgrades = attackSpeedUpgrades;
         YandexGame.SaveProgress();
     }
 
@@ -98,6 +107,7 @@ public class StoreScore : MonoBehaviour
     {
         priceForDamageText.text = YandexGame.savesData.priceForDamageUpgrade.ToString();
         priceForAttckSpeedText.text = YandexGame.savesData.priceForAttackSpeedUpgrade.ToString();
+        attackSpeedUpgradesText.text = YandexGame.savesData.attackSpeedUpgrades.ToString() + "/5";
     }
 
     private void Rewarded(int id)

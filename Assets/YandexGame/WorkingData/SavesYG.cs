@@ -21,6 +21,7 @@ namespace YG
         public float damage = 25;
         public int priceForDamageUpgrade = 50;
         public int priceForAttackSpeedUpgrade = 30;
+        public int attackSpeedUpgrades = 0;
         // Ваши сохранения
 
         // ...

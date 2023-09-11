@@ -81,7 +81,7 @@ public class HealthScript : MonoBehaviour
         if (collision.tag == "EnemyBullet")
         {
             BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-            TakeDamage(10);
+            TakeDamage(15);
             bullet.DestroyBullet();
         }
     }

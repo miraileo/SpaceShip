@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform spawnPos;
 
     [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemy1;
+    [SerializeField] private GameObject enemy2;
     [SerializeField] private GameObject rock;
 
     [SerializeField] private GameObject commandor;
@@ -54,7 +56,18 @@ public class Spawner : MonoBehaviour
             spawnPos = randomSpawnPos();
             if (commandorIsAlive == false)
             {
-                Instantiate(enemy, spawnPos.position, angle);
+                switch (RandomSpawnVarity())
+                {
+                case 0:
+                    Instantiate(enemy, spawnPos.position, angle);
+                break;
+                case 1:
+                    Instantiate(enemy1, spawnPos.position, angle);
+                break;
+                case 2:
+                    Instantiate(enemy2, spawnPos.position, angle);
+                break;
+                }
             }
             if (RandomSpawnVarity() == 1)
             {

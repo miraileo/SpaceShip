@@ -30,7 +30,7 @@ public class LeaderBoard : MonoBehaviour
     private void GiveScore(int score)
     {
         _score += score;
-        scoreText.text = "Score: " + _score.ToString();
+        scoreText.text = "Счет: " + _score.ToString();
         scoreTextInGame.text = _score.ToString();
     }
 
@@ -39,13 +39,13 @@ public class LeaderBoard : MonoBehaviour
         if (YandexGame.savesData.record <= _score)
         {
             finalScore = _score;
-            recordText.text = "Record: " + finalScore.ToString();
+            recordText.text = "Рекорд: " + finalScore.ToString();
             YandexGame.NewLeaderboardScores("LeaderBoard", finalScore);
             MySave();
         }
         else
         {
-            recordText.text = "Record: " + finalScore.ToString();
+            recordText.text = "Рекорд: " + finalScore.ToString();
         }
     }
 

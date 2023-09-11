@@ -14,7 +14,7 @@ public class CommandorEnemyShipScript : EnemySgipScript
     void Start()
     {
         SetUp();
-        health = 1000;
+        health = 800 + (leaderBoard._score*12);
         origin = GameObject.FindGameObjectWithTag("Origin");
     }
 
@@ -72,7 +72,7 @@ public class CommandorEnemyShipScript : EnemySgipScript
             Instantiate(bullet, shootPos.position, angle);
             Instantiate(bullet, shootPos1.position, angle);
             Instantiate(bullet, shootPos2.position, angle);
-            timeBtwAttack = 0.7f;
+            timeBtwAttack = 1.2f;
         }
         else
         {

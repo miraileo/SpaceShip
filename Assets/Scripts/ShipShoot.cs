@@ -47,6 +47,10 @@ public class ShipShoot : MonoBehaviour
     {
         cooldown = CheckCooldown(cooldown, timeBtwAttack);
         Shoot();
+        if(timeBtwAttack<=0.2f && isSpeedBonus == false)
+        {
+            timeBtwAttack = 0.2f;
+        }
     }
 
     private float CheckCooldown(float cooldown, float timeBtwAttack)

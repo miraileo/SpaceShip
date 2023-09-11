@@ -10,7 +10,7 @@ public class EnemySgipScript : MonoBehaviour
     BonusesDropScript bonus;
     public float damage;
 
-    LeaderBoard leaderBoard;
+    protected LeaderBoard leaderBoard;
 
     void Start()
     {
@@ -95,8 +95,8 @@ public class EnemySgipScript : MonoBehaviour
         leaderBoard = FindObjectOfType<LeaderBoard>().GetComponent<LeaderBoard>();
         if(leaderBoard._score%10 >= 0)
         {
-            health += leaderBoard._score;
-            speed += 0.25f*leaderBoard._score/10;
+            health += leaderBoard._score*2;
+            speed += 0.35f*leaderBoard._score/10;
         }
     }
 }
