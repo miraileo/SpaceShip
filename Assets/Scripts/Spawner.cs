@@ -13,7 +13,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject rock;
 
+    [SerializeField] private GameObject commandor;
+
+    public bool commandorIsAlive = false;
+    private int counterForBoss = 20;
     Quaternion angle;
+
+    [SerializeField] private LeaderBoard leaderBoard;
 
     private void Start()
     {
@@ -22,6 +28,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        SpawnBoss();
         SpawnEnemies();
         coolDown();
     }
@@ -45,7 +52,10 @@ public class Spawner : MonoBehaviour
         if (ReadyToSpawn == true)
         {
             spawnPos = randomSpawnPos();
-            Instantiate(enemy, spawnPos.position, angle);
+            if (commandorIsAlive == false)
+            {
+                Instantiate(enemy, spawnPos.position, angle);
+            }
             if (RandomSpawnVarity() == 1)
             {
                 SpawnRocks();
@@ -70,5 +80,15 @@ public class Spawner : MonoBehaviour
         float randomX = Random.Range(-2.5f, 2.5f);
         spawnPos.position = new Vector2(randomX, spawnPos.transform.position.y);
         return spawnPos;
+    }
+
+    void SpawnBoss()
+    {
+        if(counterForBoss == leaderBoard._score)
+        {
+            Instantiate(commandor, spawnPos.position, angle);
+            commandorIsAlive = true;
+            counterForBoss += 30;
+        }
     }
 }

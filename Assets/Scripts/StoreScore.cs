@@ -104,7 +104,7 @@ public class StoreScore : MonoBehaviour
     {
         if (id == 1)
         {
-            coinScript.AddMoney();
+            coinScript.AddMoney(100);
         }
     }
 

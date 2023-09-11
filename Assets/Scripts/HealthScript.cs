@@ -75,4 +75,14 @@ public class HealthScript : MonoBehaviour
     {
         health -= damage;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyBullet")
+        {
+            BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
+            TakeDamage(10);
+            bullet.DestroyBullet();
+        }
+    }
 }

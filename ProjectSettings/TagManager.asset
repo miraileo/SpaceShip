@@ -13,6 +13,7 @@ TagManager:
   - DeathZone
   - Rock
   - Origin
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

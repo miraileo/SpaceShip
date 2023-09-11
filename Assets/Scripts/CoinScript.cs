@@ -63,9 +63,9 @@ public class CoinScript : MonoBehaviour
         return flag;
     }
 
-    public void AddMoney()
+    public void AddMoney(int money)
     {
-        coin += 100;
+        coin += money;
         coinsText.text = coin.ToString();
         MySave();
     }

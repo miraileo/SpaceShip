@@ -14,11 +14,18 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        MoveBullet();
+        if (gameObject.tag != "EnemyBullet")
+        {
+            MoveBullet(bulletSpeed);
+        }
+        else
+        {
+            MoveBullet(-5);
+        }
     }
-    private void MoveBullet()
+    private void MoveBullet(float speed)
     {
-        rigidbody2.velocity = new Vector2(0, bulletSpeed);
+        rigidbody2.velocity = new Vector2(0, speed);
         Invoke("Destroy", 1.6f);
     }
 

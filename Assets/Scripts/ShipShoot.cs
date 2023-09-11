@@ -57,7 +57,6 @@ public class ShipShoot : MonoBehaviour
         }
         return cooldown;
     }
-
     private void Shoot()
     {
         if (cooldown <= 0)
