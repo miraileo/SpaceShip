@@ -448,6 +448,8 @@ MonoBehaviour:
   settings: {fileID: 1426773893}
   sliderMusic: {fileID: 724314201}
   sliderEffects: {fileID: 111703301}
+  menuButton: {fileID: 2099223893}
+  sourceButton: {fileID: 1588491182}
 --- !u!82 &165827425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2210,6 +2212,7 @@ MonoBehaviour:
   store: {fileID: 1810809055}
   attackSpeedUpgradesText: {fileID: 0}
   attackSpeedUpgradeButton: {fileID: 0}
+  storeButton: {fileID: 0}
 --- !u!1 &1359160853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8163,10 +8166,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165827426}
-        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-        m_MethodName: NextScene
-        m_Mode: 3
+      - m_Target: {fileID: 165827424}
+        m_TargetAssemblyTypeName: AudioScript, Assembly-CSharp
+        m_MethodName: MenuButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

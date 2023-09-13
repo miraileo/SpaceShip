@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioScript : MonoBehaviour
@@ -17,6 +18,12 @@ public class AudioScript : MonoBehaviour
     [SerializeField] private Slider sliderMusic;
     [SerializeField] private Slider sliderEffects;
 
+    [SerializeField] private GameObject menuButton;
+
+    public Button sourceButton;
+    [SerializeField] private Button shopButton;
+
+    private bool stopFindingShit;
     private void Awake()
     {
         int numMusicPlayers = FindObjectsOfType<AudioScript>().Length;
@@ -28,10 +35,8 @@ public class AudioScript : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
         }
-            DontDestroyOnLoad(gameObject);
-            sourceEffects = GetComponent<AudioSource>();
+        sourceEffects = GetComponent<AudioSource>();
     }
-
     public void PlayShoot()
     {
         sourceEffects.PlayOneShot(shootClip);
@@ -41,6 +46,12 @@ public class AudioScript : MonoBehaviour
     {
         volumeUpdateEffects();
         volumeUpdateMusic();
+        if(SceneManager.GetActiveScene().buildIndex == 1 && stopFindingShit == false)
+        {
+            shopButton = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Button>();
+            settings.SetActive(false);
+            stopFindingShit = true;
+        }
     }
     public void PlayFastShoot()
     {
@@ -55,10 +66,23 @@ public class AudioScript : MonoBehaviour
     public void OpenSettings()
     {
         settings.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            menuButton.SetActive(false);
+        }
+        else
+        {
+            menuButton.SetActive(true);
+            shopButton.interactable = false;
+        }
     }
 
     public void CloseSettings()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            shopButton.interactable = true;
+        }
         settings.SetActive(false);
     }
 
@@ -67,7 +91,7 @@ public class AudioScript : MonoBehaviour
         sourceEffects.PlayOneShot(DestroyEffect);
     }
 
-        public void volumeUpdateEffects()
+    public void volumeUpdateEffects()
     {
         sourceEffects.volume = sliderEffects.value;
     }
@@ -75,5 +99,11 @@ public class AudioScript : MonoBehaviour
     public void volumeUpdateMusic()
     {
         sourceMusic.volume = sliderMusic.value;
+    }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene(0);
+        settings.SetActive(false);
     }
 }

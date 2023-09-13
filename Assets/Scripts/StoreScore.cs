@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
-using YG.Example;
 
 public class StoreScore : MonoBehaviour
 {
@@ -17,6 +16,10 @@ public class StoreScore : MonoBehaviour
     private int attackSpeedUpgrades;
     [SerializeField] private Text attackSpeedUpgradesText;
     [SerializeField] private Button attackSpeedUpgradeButton;
+
+    public Button storeButton;
+
+    AudioScript source;
     private void OnEnable()
     {
         YandexGame.RewardVideoEvent += Rewarded;
@@ -40,6 +43,7 @@ public class StoreScore : MonoBehaviour
     private void Start()
     {
         coinScript = (CoinScript)FindObjectOfType(typeof(CoinScript));
+        source = FindObjectOfType<AudioScript>();
     }
 
     private void Update()
@@ -78,6 +82,7 @@ public class StoreScore : MonoBehaviour
     public void OpenStore()
     {
         store.SetActive(true);
+        source.sourceButton.interactable = false;
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             coinScript.LoadMoney();
@@ -85,6 +90,7 @@ public class StoreScore : MonoBehaviour
     }
     public void CloseStore()
     {
+        source.sourceButton.interactable = true;
         store.SetActive(false);
     }
 
