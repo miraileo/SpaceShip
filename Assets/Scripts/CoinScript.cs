@@ -19,6 +19,11 @@ public class CoinScript : MonoBehaviour
         Invoke("LoadMoney", 0.2f);
     }
 
+    private void Update()
+    {
+        LoadMoney();
+    }
+
     public void GetCoin(int numOfCoins)
     {
         coin += numOfCoins;

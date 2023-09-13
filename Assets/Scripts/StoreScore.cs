@@ -19,6 +19,8 @@ public class StoreScore : MonoBehaviour
 
     public Button storeButton;
 
+    private GameObject sourcePrefab;
+
     AudioScript source;
     private void OnEnable()
     {
@@ -44,6 +46,14 @@ public class StoreScore : MonoBehaviour
     {
         coinScript = (CoinScript)FindObjectOfType(typeof(CoinScript));
         source = FindObjectOfType<AudioScript>();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            sourcePrefab = GameObject.Find("Settings");
+            if (sourcePrefab != null)
+            {
+                sourcePrefab.SetActive(false);
+            }
+        }
     }
 
     private void Update()
@@ -82,10 +92,13 @@ public class StoreScore : MonoBehaviour
     public void OpenStore()
     {
         store.SetActive(true);
-        source.sourceButton.interactable = false;
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             coinScript.LoadMoney();
+        }
+        else
+        {
+            source.sourceButton.interactable = false;
         }
     }
     public void CloseStore()

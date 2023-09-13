@@ -13348,6 +13348,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5808293521716593057, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5808293521716593058, guid: 017f094f361b4bd4c81aec516de54adb, type: 3}
       propertyPath: m_RootOrder
       value: 1

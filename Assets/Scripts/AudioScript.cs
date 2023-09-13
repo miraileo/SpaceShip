@@ -23,7 +23,6 @@ public class AudioScript : MonoBehaviour
     public Button sourceButton;
     [SerializeField] private Button shopButton;
 
-    private bool stopFindingShit;
     private void Awake()
     {
         int numMusicPlayers = FindObjectsOfType<AudioScript>().Length;
@@ -46,11 +45,9 @@ public class AudioScript : MonoBehaviour
     {
         volumeUpdateEffects();
         volumeUpdateMusic();
-        if(SceneManager.GetActiveScene().buildIndex == 1 && stopFindingShit == false)
+        if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             shopButton = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Button>();
-            settings.SetActive(false);
-            stopFindingShit = true;
         }
     }
     public void PlayFastShoot()
