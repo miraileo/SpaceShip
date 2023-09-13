@@ -2138,7 +2138,6 @@ MonoBehaviour:
   attackSpeedUpgradesText: {fileID: 0}
   attackSpeedUpgradeButton: {fileID: 0}
   storeButton: {fileID: 0}
-  sourcePrefab: {fileID: 0}
 --- !u!1 &1359160853
 GameObject:
   m_ObjectHideFlags: 0
