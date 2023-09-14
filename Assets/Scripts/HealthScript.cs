@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -13,6 +13,8 @@ public class HealthScript : MonoBehaviour
     [SerializeField] private GameObject deathPanel;
 
     CoinScript coins;
+
+    private GameObject sourcePrefab;
 
     private void Awake()
     {
@@ -27,6 +29,14 @@ public class HealthScript : MonoBehaviour
             HitEffect();
             Invoke("Destroy", 0.5f);
             coins.MySave();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                sourcePrefab = GameObject.Find("Settings");
+                if (sourcePrefab != null)
+                {
+                    sourcePrefab.SetActive(false);
+                }
+            }
         }
         HealthBarUpdate();
 
